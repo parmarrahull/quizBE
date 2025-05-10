@@ -19,12 +19,16 @@ const app = express();
  
 
 // Setup CORS
-app.use(cors({
-  origin: ["https://your-frontend.vercel.app", "http://localhost:3000"], // replace with your actual frontend URL
+const corsOptions = {
+  origin: ["https://quiz-fe-phi.vercel.app", "http://localhost:3000"], // ✅ Update this
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // ✅ Allow preflight
+
 
 // Load env vars
 dotenv.config();
