@@ -20,7 +20,7 @@ const app = express();
 
 // Setup CORS
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://quiz-be-phi.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
   }));
