@@ -20,10 +20,11 @@ const app = express();
 
 // Setup CORS
 app.use(cors({
-    origin: "https://quiz-be-phi.vercel.app/",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-  }));
+  origin: ["https://your-frontend.vercel.app", "http://localhost:3000"], // replace with your actual frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 
 // Load env vars
 dotenv.config();
