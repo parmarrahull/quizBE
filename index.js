@@ -21,7 +21,7 @@ const app = express();
 // Setup CORS
 const corsOptions = {
   origin: [
-  "https://quiz-81h7gu01b-parmarrahulls-projects.vercel.app", 
+  "https://quiz-be-phi.vercel.app/", 
   "http://localhost:3000"
 ],
   methods: ["GET", "POST", "PUT", "DELETE"],
