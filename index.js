@@ -19,18 +19,19 @@ const app = express();
  
 
 // Setup CORS
-const corsOptions = {
+app.use(cors({
   origin: [
-  "https://quiz-be-phi.vercel.app/", 
-  "http://localhost:3000"
-],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+    "https://your-frontend.vercel.app",
+    "http://localhost:3000"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-};
+  credentials: true
+}));
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // ✅ Allow preflight
+
+// app.use(cors(corsOptions));
+// app.options("*", cors(corsOptions)); // ✅ Allow preflight
 
 
 // Load env vars
