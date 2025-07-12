@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
 
-const MONGO_URI = "mongodb://127.0.0.1:27017/QuizDatabase"; 
+const MONGO_URI = "mongodb+srv://quiz:quiz123@cluster0.k3ik8in.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; 
 
 async function connectDB() {
     try {

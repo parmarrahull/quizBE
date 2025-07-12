@@ -10,21 +10,33 @@ const Answer = require("./models/answerModel");
 const Quiz = require("./models/quizModel");
 const Result = require("./models/resultModel");
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/QuizDatabase";
+const MONGO_URI = process.env.MONGO_URI;
 
-mongoose.connect(MONGO_URI)
-    .then(() => console.log("MongoDB Connected Successfully!"))
-    .catch(err => {
-        console.error("MongoDB Connection Failed:", err);
-        process.exit(1);
-    });
+// mongoose.connect("mongodb+srv://quiz:quiz123@cluster0.k3ik8in.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+//     .then(() => console.log("MongoDB Connected Successfully!"))
+//     .catch(err => {
+//         console.error("MongoDB Connection Failed:", err);
+//         process.exit(1);
+//     });
+
+const DB_URL = "mongodb+srv://quiz:quiz123@cluster0.k3ik8in.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+//Database connection configuration
+mongoose.connect(DB_URL);
+const conn = mongoose.connection;
+conn.once('open', () => {
+    console.log('successfully connected to database');
+})
+conn.on('error', (err) => {
+    console.log(`failed to connect to database ${err.message}`);
+})
 
 const seedDatabase = async () => {
     try {
         await Role.deleteMany({});
         await User.deleteMany({});
         await QuizType.deleteMany({});
-        await Question.deleteMany({}); 
+        await Question.deleteMany({});
         await Answer.deleteMany({});
         await Quiz.deleteMany({});
         await Result.deleteMany({});
